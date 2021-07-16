@@ -87,10 +87,10 @@ Public Class F1_Clientes
         'copio la imagen en la carpeta del sistema
 
         Dim file As New OpenFileDialog()
-        file.Filter = "Ficheros JPG o JPEG o PNG|*.jpg;*.jpeg;*.png" & _
-                      "|Ficheros GIF|*.gif" & _
-                      "|Ficheros BMP|*.bmp" & _
-                      "|Ficheros PNG|*.png" & _
+        file.Filter = "Ficheros JPG o JPEG o PNG|*.jpg;*.jpeg;*.png" &
+                      "|Ficheros GIF|*.gif" &
+                      "|Ficheros BMP|*.bmp" &
+                      "|Ficheros PNG|*.png" &
                       "|Ficheros TIFF|*.tif"
         If file.ShowDialog() = DialogResult.OK Then
             Dim ruta As String = file.FileName
@@ -551,6 +551,14 @@ Public Class F1_Clientes
         Dim _ok As Boolean = True
         MEP.Clear()
 
+        If tbRazonSocial.Text = String.Empty Then
+            tbRazonSocial.BackColor = Color.Red
+            MEP.SetError(tbRazonSocial, "ingrese la razón social!".ToUpper)
+            _ok = False
+        Else
+            tbRazonSocial.BackColor = Color.White
+            MEP.SetError(tbRazonSocial, "")
+        End If
         If tbNombre.Text = String.Empty Then
             tbNombre.BackColor = Color.Red
             MEP.SetError(tbNombre, "ingrese el nombre del Usuario!".ToUpper)
@@ -559,27 +567,31 @@ Public Class F1_Clientes
             tbNombre.BackColor = Color.White
             MEP.SetError(tbNombre, "")
         End If
+        'If tbNit.Text = String.Empty Then
+        '    tbNit.BackColor = Color.Red
+        '    MEP.SetError(tbNit, "ingrese el Nit para la factura!".ToUpper)
+        '    _ok = False
+        'Else
+        '    tbNit.BackColor = Color.White
+        '    MEP.SetError(tbNit, "")
+        'End If
         If (cbCatPrec.SelectedIndex < 0) Then
-
             If (CType(cbCatPrec.DataSource, DataTable).Rows.Count > 0) Then
                 cbCatPrec.SelectedIndex = 0
             End If
         End If
         If (cbZona.SelectedIndex < 0) Then
-
             If (CType(cbZona.DataSource, DataTable).Rows.Count > 0) Then
                 cbZona.SelectedIndex = 0
             End If
         End If
         If (cbTipoDoc.SelectedIndex < 0) Then
-
             If (CType(cbTipoDoc.DataSource, DataTable).Rows.Count > 0) Then
                 cbTipoDoc.SelectedIndex = 0
             End If
         End If
 
         If (cbVisita.SelectedIndex < 0) Then
-
             If (CType(cbVisita.DataSource, DataTable).Rows.Count > 0) Then
                 cbVisita.SelectedIndex = 0
             End If
@@ -834,9 +846,6 @@ Public Class F1_Clientes
         End If
     End Sub
 
-    Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
-
-    End Sub
 
     Private Sub JGrM_Buscador_KeyDown(sender As Object, e As KeyEventArgs) Handles JGrM_Buscador.KeyDown
         If e.KeyData = Keys.Enter Then
@@ -993,4 +1002,11 @@ Public Class F1_Clientes
             Timer1.Enabled = False
         End If
     End Sub
+
+    Private Sub tbRazonSocial_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles tbRazonSocial.Validating
+        If btnGrabar.Enabled = True Then
+            tbNombFac.Text = tbRazonSocial.Text
+        End If
+    End Sub
+
 End Class

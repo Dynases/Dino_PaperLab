@@ -218,6 +218,7 @@ Partial Class F1_Clientes
         'TxtNombreUsu
         '
         Me.TxtNombreUsu.Margin = New System.Windows.Forms.Padding(4)
+        Me.TxtNombreUsu.Size = New System.Drawing.Size(200, 36)
         '
         'btnSalir
         '
@@ -316,6 +317,7 @@ Partial Class F1_Clientes
         '
         'btnUltimo
         '
+        Me.btnUltimo.Location = New System.Drawing.Point(129, 0)
         Me.btnUltimo.Margin = New System.Windows.Forms.Padding(2)
         '
         'MPanelUserAct
@@ -434,7 +436,7 @@ Partial Class F1_Clientes
         Me.LabelX10.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX10.Size = New System.Drawing.Size(113, 23)
         Me.LabelX10.TabIndex = 227
-        Me.LabelX10.Text = "Nombre:"
+        Me.LabelX10.Text = "Nombre(*):"
         '
         'tbDireccion
         '
@@ -1129,7 +1131,7 @@ Partial Class F1_Clientes
         Me.LabelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX17.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX17.Location = New System.Drawing.Point(14, 73)
+        Me.LabelX17.Location = New System.Drawing.Point(8, 73)
         Me.LabelX17.Name = "LabelX17"
         Me.LabelX17.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX17.Size = New System.Drawing.Size(116, 23)
@@ -1240,12 +1242,12 @@ Partial Class F1_Clientes
         Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX12.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX12.Location = New System.Drawing.Point(14, 190)
+        Me.LabelX12.Location = New System.Drawing.Point(9, 190)
         Me.LabelX12.Name = "LabelX12"
         Me.LabelX12.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX12.Size = New System.Drawing.Size(113, 23)
         Me.LabelX12.TabIndex = 240
-        Me.LabelX12.Text = "Nit/CI Factura:"
+        Me.LabelX12.Text = "Nit/CI Factura(*):"
         '
         'tbNombFac
         '
@@ -1272,12 +1274,12 @@ Partial Class F1_Clientes
         Me.LabelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX11.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX11.Location = New System.Drawing.Point(14, 161)
+        Me.LabelX11.Location = New System.Drawing.Point(8, 161)
         Me.LabelX11.Name = "LabelX11"
         Me.LabelX11.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX11.Size = New System.Drawing.Size(113, 23)
+        Me.LabelX11.Size = New System.Drawing.Size(125, 23)
         Me.LabelX11.TabIndex = 238
-        Me.LabelX11.Text = "Nombre Factura:"
+        Me.LabelX11.Text = "Nombre Factura(*):"
         '
         'swEstado
         '
@@ -1310,7 +1312,7 @@ Partial Class F1_Clientes
         Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX9.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX9.Location = New System.Drawing.Point(14, 218)
+        Me.LabelX9.Location = New System.Drawing.Point(9, 218)
         Me.LabelX9.Name = "LabelX9"
         Me.LabelX9.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX9.Size = New System.Drawing.Size(79, 23)
@@ -1326,7 +1328,7 @@ Partial Class F1_Clientes
         Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX8.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX8.Location = New System.Drawing.Point(14, 43)
+        Me.LabelX8.Location = New System.Drawing.Point(8, 43)
         Me.LabelX8.Name = "LabelX8"
         Me.LabelX8.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX8.Size = New System.Drawing.Size(116, 23)
@@ -1363,6 +1365,7 @@ Partial Class F1_Clientes
         Me.tbNdoc.PreventEnterBeep = True
         Me.tbNdoc.Size = New System.Drawing.Size(166, 22)
         Me.tbNdoc.TabIndex = 9
+        Me.tbNdoc.Visible = False
         '
         'LabelX7
         '
@@ -1373,12 +1376,13 @@ Partial Class F1_Clientes
         Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX7.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX7.Location = New System.Drawing.Point(14, 132)
+        Me.LabelX7.Location = New System.Drawing.Point(8, 132)
         Me.LabelX7.Name = "LabelX7"
         Me.LabelX7.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX7.Size = New System.Drawing.Size(113, 23)
         Me.LabelX7.TabIndex = 231
         Me.LabelX7.Text = "N. Documento:"
+        Me.LabelX7.Visible = False
         '
         'lbgrupo1
         '
@@ -1389,7 +1393,7 @@ Partial Class F1_Clientes
         Me.lbgrupo1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbgrupo1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbgrupo1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbgrupo1.Location = New System.Drawing.Point(14, 17)
+        Me.lbgrupo1.Location = New System.Drawing.Point(8, 17)
         Me.lbgrupo1.Name = "lbgrupo1"
         Me.lbgrupo1.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lbgrupo1.Size = New System.Drawing.Size(116, 23)
@@ -1405,12 +1409,13 @@ Partial Class F1_Clientes
         Me.lbgrupo2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbgrupo2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbgrupo2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbgrupo2.Location = New System.Drawing.Point(14, 103)
+        Me.lbgrupo2.Location = New System.Drawing.Point(8, 103)
         Me.lbgrupo2.Name = "lbgrupo2"
         Me.lbgrupo2.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lbgrupo2.Size = New System.Drawing.Size(116, 23)
         Me.lbgrupo2.TabIndex = 30
         Me.lbgrupo2.Text = "Tipo Documento:"
+        Me.lbgrupo2.Visible = False
         '
         'btTipoDoc
         '
@@ -1458,6 +1463,7 @@ Partial Class F1_Clientes
         Me.cbTipoDoc.Size = New System.Drawing.Size(144, 22)
         Me.cbTipoDoc.TabIndex = 2
         Me.cbTipoDoc.TabStop = False
+        Me.cbTipoDoc.Visible = False
         Me.cbTipoDoc.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'Timer1

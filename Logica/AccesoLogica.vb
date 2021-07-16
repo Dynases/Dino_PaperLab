@@ -969,7 +969,19 @@ Public Class AccesoLogica
         Return _Tabla
     End Function
 
+    Public Shared Function L_fnObtenerClientesporRazonSocialNit(_RazonSocial As String, _Nit As String) As DataTable
+        Dim _Tabla As DataTable
 
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 12))
+        _listParam.Add(New Datos.DParametro("@ydrazonsocioal", _RazonSocial))
+        _listParam.Add(New Datos.DParametro("@ydnit", _Nit))
+        _listParam.Add(New Datos.DParametro("@yduact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TY004", _listParam)
+
+        Return _Tabla
+    End Function
 #End Region
 
 #Region "TY006 Categorias"

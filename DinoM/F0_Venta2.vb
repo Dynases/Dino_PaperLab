@@ -136,6 +136,7 @@ Public Class F0_Venta2
         tbFechaVenc.IsInputReadOnly = True
         swTipoVenta.IsReadOnly = True
         txtEstado.ReadOnly = True
+        btCliente.Visible = False
 
         'Datos facturacion
         tbNroAutoriz.ReadOnly = True
@@ -190,6 +191,7 @@ Public Class F0_Venta2
         swTipoVenta.IsReadOnly = False
         tbFechaVenta.IsInputReadOnly = False
         tbFechaVenta.Enabled = True
+        btCliente.Visible = True
 
         swMoneda.IsReadOnly = False
 
@@ -584,10 +586,9 @@ Public Class F0_Venta2
         'a.tadesc ,a.tafact ,a.tahact ,a.tauact,(Sum(b.tbptot)-a.tadesc ) as total
 
         With grVentas.RootTable.Columns("tanumi")
-            .Width = 100
+            .Width = 90
             .Caption = "CODIGO"
             .Visible = True
-
         End With
 
         With grVentas.RootTable.Columns("taalm")
@@ -610,11 +611,10 @@ Public Class F0_Venta2
             .Visible = False
         End With
         With grVentas.RootTable.Columns("vendedor")
-            .Width = 250
+            .Width = 200
             .Visible = True
             .Caption = "VENDEDOR".ToUpper
         End With
-
 
         With grVentas.RootTable.Columns("tatven")
             .Width = 50
@@ -632,13 +632,24 @@ Public Class F0_Venta2
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
-        With grVentas.RootTable.Columns("cliente")
+        With grVentas.RootTable.Columns("nombrecli")
             .Width = 250
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
             .Caption = "CLIENTE"
         End With
-
+        With grVentas.RootTable.Columns("cliente")
+            .Width = 250
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = True
+            .Caption = "RAZÓN SOCIAL"
+        End With
+        With grVentas.RootTable.Columns("nit")
+            .Width = 100
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = True
+            .Caption = "NIT/CI"
+        End With
         With grVentas.RootTable.Columns("tamon")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -1655,7 +1666,8 @@ Public Class F0_Venta2
             End If
 
             If (Not tbNit.Text.Trim.Equals("0")) Then
-                L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, TbNombre2.Text.Trim)
+                'Se comentó para que ya no inserte porque ahora se agrega   cuando se crea un cliente
+                'L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, TbNombre2.Text.Trim)
             Else
                 L_Grabar_Nit(tbNit.Text, "S/N", "")
             End If
@@ -2397,24 +2409,24 @@ Public Class F0_Venta2
                 Dim listEstCeldas As New List(Of Modelo.Celda)
                 listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "ID", 50))
                 listEstCeldas.Add(New Modelo.Celda("ydcod", False, "ID", 50))
-                listEstCeldas.Add(New Modelo.Celda("ydrazonsocial", True, "RAZÓN SOCIAL", 180))
-                listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
-                listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
-                listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCIÓN", 220))
-                listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Teléfono".ToUpper, 200))
-                listEstCeldas.Add(New Modelo.Celda("ydfnac", True, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+                listEstCeldas.Add(New Modelo.Celda("ydrazonsocial", True, "RAZÓN SOCIAL", 250))
+                listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 250))
+                listEstCeldas.Add(New Modelo.Celda("yddctnum", False, "N. Documento".ToUpper, 150))
+                listEstCeldas.Add(New Modelo.Celda("yddirec", False, "DIRECCIÓN", 220))
+                listEstCeldas.Add(New Modelo.Celda("ydtelf1", False, "Teléfono".ToUpper, 200))
+                listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
                 listEstCeldas.Add(New Modelo.Celda("ydnumivend,", False, "ID", 50))
                 listEstCeldas.Add(New Modelo.Celda("vendedor,", False, "ID", 50))
                 listEstCeldas.Add(New Modelo.Celda("yddias", False, "CRED", 50))
                 listEstCeldas.Add(New Modelo.Celda("ydnomfac", False, "Nombre Factura", 50))
-                listEstCeldas.Add(New Modelo.Celda("ydnit", False, "Nit/CI", 50))
+                listEstCeldas.Add(New Modelo.Celda("ydnit", True, "Nit/CI", 100))
                 Dim ef = New Efecto
                 ef.tipo = 3
                 ef.dt = dt
                 ef.SeleclCol = 2
                 ef.listEstCeldas = listEstCeldas
-                ef.alto = 50
-                ef.ancho = 350
+                ef.alto = 250
+                ef.ancho = 160
                 ef.Context = "Seleccione Cliente".ToUpper
                 ef.ShowDialog()
                 Dim bandera As Boolean = False
@@ -2423,10 +2435,10 @@ Public Class F0_Venta2
                     Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
 
                     _CodCliente = Row.Cells("ydnumi").Value
-                    tbCliente.Text = Row.Cells("ydrazonsocial").Value
+                    tbCliente.Text = Row.Cells("yddesc").Value
                     _dias = Row.Cells("yddias").Value
                     tbNit.Text = Row.Cells("ydnit").Value
-                    TbNombre1.Text = Row.Cells("ydnomfac").Value
+                    TbNombre1.Text = Row.Cells("ydrazonsocial").Value
 
                     Dim numiVendedor As Integer = IIf(IsDBNull(Row.Cells("ydnumivend").Value), 0, Row.Cells("ydnumivend").Value)
                     If (numiVendedor > 0) Then
@@ -3450,12 +3462,29 @@ salirIf:
             nom2 = ""
             If (tbNit.Text.Trim <> String.Empty) Then
                 L_Validar_Nit(tbNit.Text.Trim, nom1, nom2)
+
                 If nom1 = "" Then
                     TbNombre1.Focus()
                 Else
                     TbNombre1.Text = nom1
                     TbNombre2.Text = nom2
+                    Dim dt As DataTable = L_fnObtenerClientesporRazonSocialNit(TbNombre1.Text, tbNit.Text)
+                    tbCliente.Text = dt.Rows(0).Item("yddesc")
+                    Dim numiVendedor As Integer = IIf(IsDBNull(dt.Rows(0).Item("ydnumivend")), 0, dt.Rows(0).Item("ydnumivend"))
+                    If (numiVendedor > 0) Then
+                        tbVendedor.Text = dt.Rows(0).Item("vendedor")
+                        _CodEmpleado = dt.Rows(0).Item("ydnumivend")
+                        grdetalle.Select()
+                        Table_Producto = Nothing
+                    Else
+                        tbVendedor.Clear()
+                        _CodEmpleado = 0
+                        tbVendedor.Focus()
+                        Table_Producto = Nothing
+                    End If
+
                 End If
+
             End If
 
         End If
@@ -3698,6 +3727,40 @@ salirIf:
         Else
             Me.Opacity = 100
             Timer1.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btCliente_Click(sender As Object, e As EventArgs) Handles btCliente.Click
+        Dim frm As New F_ClienteNuevo
+        Dim dt As DataTable
+        frm.ShowDialog()
+
+
+        If (frm.Cliente = True) Then ''Aqui Consulto si se inserto un nuevo Cliente cargo sus datos del nuevo cliente insertado
+
+            dt = L_fnObtenerClientesporRazonSocialNit(frm.Razonsocial, frm.Nit)
+            If (dt.Rows.Count > 0) Then
+                _CodCliente = dt.Rows(0).Item("ydnumi")
+                tbCliente.Text = dt.Rows(0).Item("yddesc")
+                _dias = dt.Rows(0).Item("yddias")
+                tbNit.Text = dt.Rows(0).Item("ydnit")
+                TbNombre1.Text = dt.Rows(0).Item("ydrazonsocial")
+
+                Dim numiVendedor As Integer = IIf(IsDBNull(dt.Rows(0).Item("ydnumivend")), 0, dt.Rows(0).Item("ydnumivend"))
+                If (numiVendedor > 0) Then
+                    tbVendedor.Text = dt.Rows(0).Item("vendedor")
+                    _CodEmpleado = dt.Rows(0).Item("ydnumivend")
+
+                    grdetalle.Select()
+                    Table_Producto = Nothing
+                Else
+                    tbVendedor.Clear()
+                    _CodEmpleado = 0
+                    tbVendedor.Focus()
+                    Table_Producto = Nothing
+                End If
+
+            End If
         End If
     End Sub
 

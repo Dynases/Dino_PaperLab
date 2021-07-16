@@ -205,11 +205,11 @@ Partial Class P_Principal
         'SideNav1
         '
         Me.SideNav1.BackColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.SideNav1.Controls.Add(Me.SideNav_Conf)
         Me.SideNav1.Controls.Add(Me.SideNavPanel6)
         Me.SideNav1.Controls.Add(Me.SideNav_Ventas)
         Me.SideNav1.Controls.Add(Me.SideNavPanel5)
         Me.SideNav1.Controls.Add(Me.SideNavPanel7)
-        Me.SideNav1.Controls.Add(Me.SideNav_Conf)
         Me.SideNav1.Controls.Add(Me.SideNav_Logistica)
         Me.SideNav1.Controls.Add(Me.SideNavPanel3)
         Me.SideNav1.Controls.Add(Me.SideNavPanel4)
@@ -230,8 +230,9 @@ Partial Class P_Principal
         Me.SideNavPanel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SideNavPanel6.Location = New System.Drawing.Point(142, 36)
         Me.SideNavPanel6.Name = "SideNavPanel6"
-        Me.SideNavPanel6.Size = New System.Drawing.Size(638, 524)
+        Me.SideNavPanel6.Size = New System.Drawing.Size(637, 524)
         Me.SideNavPanel6.TabIndex = 109
+        Me.SideNavPanel6.Visible = False
         '
         'Panel2
         '
@@ -240,7 +241,7 @@ Partial Class P_Principal
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(638, 524)
+        Me.Panel2.Size = New System.Drawing.Size(637, 524)
         Me.Panel2.TabIndex = 1
         '
         'MetroTilePanel7
@@ -262,7 +263,7 @@ Partial Class P_Principal
         Me.MetroTilePanel7.Location = New System.Drawing.Point(0, 0)
         Me.MetroTilePanel7.MultiLine = True
         Me.MetroTilePanel7.Name = "MetroTilePanel7"
-        Me.MetroTilePanel7.Size = New System.Drawing.Size(638, 524)
+        Me.MetroTilePanel7.Size = New System.Drawing.Size(637, 524)
         Me.MetroTilePanel7.TabIndex = 2
         Me.MetroTilePanel7.Text = "mtp2Logistica"
         '
@@ -1118,7 +1119,6 @@ Partial Class P_Principal
         Me.SideNav_Conf.Name = "SideNav_Conf"
         Me.SideNav_Conf.Size = New System.Drawing.Size(637, 524)
         Me.SideNav_Conf.TabIndex = 2
-        Me.SideNav_Conf.Visible = False
         '
         'MetroTilePanel1
         '
@@ -2078,6 +2078,7 @@ Partial Class P_Principal
         '
         'FP_Configuracion
         '
+        Me.FP_Configuracion.Checked = True
         Me.FP_Configuracion.Name = "FP_Configuracion"
         Me.FP_Configuracion.Panel = Me.SideNav_Conf
         Me.FP_Configuracion.Symbol = ""
@@ -2117,7 +2118,6 @@ Partial Class P_Principal
         '
         'FP_COMPRAS
         '
-        Me.FP_COMPRAS.Checked = True
         Me.FP_COMPRAS.Name = "FP_COMPRAS"
         Me.FP_COMPRAS.Panel = Me.SideNavPanel6
         Me.FP_COMPRAS.Symbol = ""
