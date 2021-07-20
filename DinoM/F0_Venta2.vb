@@ -310,7 +310,7 @@ Public Class F0_Venta2
             _CodEmpleado = .GetValue("taven")
             tbVendedor.Text = .GetValue("vendedor")
             _CodCliente = .GetValue("taclpr")
-            tbCliente.Text = .GetValue("cliente")
+            tbCliente.Text = .GetValue("nombrecli")
             swMoneda.Value = .GetValue("tamon")
             tbFechaVenc.Value = .GetValue("tafvcr")
             swTipoVenta.Value = .GetValue("tatven")
@@ -3469,18 +3469,22 @@ salirIf:
                     TbNombre1.Text = nom1
                     TbNombre2.Text = nom2
                     Dim dt As DataTable = L_fnObtenerClientesporRazonSocialNit(TbNombre1.Text, tbNit.Text)
-                    tbCliente.Text = dt.Rows(0).Item("yddesc")
-                    Dim numiVendedor As Integer = IIf(IsDBNull(dt.Rows(0).Item("ydnumivend")), 0, dt.Rows(0).Item("ydnumivend"))
-                    If (numiVendedor > 0) Then
-                        tbVendedor.Text = dt.Rows(0).Item("vendedor")
-                        _CodEmpleado = dt.Rows(0).Item("ydnumivend")
-                        grdetalle.Select()
-                        Table_Producto = Nothing
-                    Else
-                        tbVendedor.Clear()
-                        _CodEmpleado = 0
-                        tbVendedor.Focus()
-                        Table_Producto = Nothing
+                    If dt.Rows.Count > 0 Then
+                        tbCliente.Text = dt.Rows(0).Item("yddesc")
+                        _CodCliente = dt.Rows(0).Item("ydnumi")
+                        _dias = dt.Rows(0).Item("yddias")
+                        Dim numiVendedor As Integer = IIf(IsDBNull(dt.Rows(0).Item("ydnumivend")), 0, dt.Rows(0).Item("ydnumivend"))
+                        If (numiVendedor > 0) Then
+                            tbVendedor.Text = dt.Rows(0).Item("vendedor")
+                            _CodEmpleado = dt.Rows(0).Item("ydnumivend")
+                            grdetalle.Select()
+                            Table_Producto = Nothing
+                        Else
+                            tbVendedor.Clear()
+                            _CodEmpleado = 0
+                            tbVendedor.Focus()
+                            Table_Producto = Nothing
+                        End If
                     End If
 
                 End If
