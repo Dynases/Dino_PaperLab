@@ -1279,7 +1279,7 @@ Partial Class F1_Clientes
         Me.LabelX11.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX11.Size = New System.Drawing.Size(125, 23)
         Me.LabelX11.TabIndex = 238
-        Me.LabelX11.Text = "Nombre Factura(*):"
+        Me.LabelX11.Text = "Razon Social(*):"
         '
         'swEstado
         '

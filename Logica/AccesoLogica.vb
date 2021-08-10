@@ -1410,7 +1410,7 @@ Public Class AccesoLogica
     Public Shared Function L_fnGrabarVenta(ByRef _tanumi As String, _taidCorelativo As String, _tafdoc As String, _taven As Integer, _tatven As Integer, _tafvcr As String, _taclpr As Integer,
                                            _tamon As Integer, _taobs As String,
                                            _tadesc As Double, _taice As Double,
-                                           _tatotal As Double, detalle As DataTable, _almacen As Integer, _taprforma As Integer, Monto As DataTable) As Boolean
+                                           _tatotal As Double, detalle As DataTable, _almacen As Integer, _taprforma As Integer, Monto As DataTable, _Nit As String, _Rsocial As String) As Boolean
         Dim _Tabla As DataTable
         Dim _resultado As Boolean
         Dim _listParam As New List(Of Datos.DParametro)
@@ -1433,6 +1433,8 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@taice", _taice))
         _listParam.Add(New Datos.DParametro("@tatotal", _tatotal))
         _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@Nit", _Nit))
+        _listParam.Add(New Datos.DParametro("@Rsocial", _Rsocial))
         _listParam.Add(New Datos.DParametro("@TV0011", "", detalle))
         _listParam.Add(New Datos.DParametro("@TV0014", "", Monto))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)

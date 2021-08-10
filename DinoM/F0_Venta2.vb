@@ -1477,7 +1477,7 @@ Public Class F0_Venta2
             ''Verifica si existe estock para los productos
             'If _prExisteStockParaProducto() Then
             Dim dtDetalle As DataTable = rearmarDetalle()
-            Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, IIf(swMoneda.Value = True, 1, 0), "", tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla)
+            Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, IIf(swMoneda.Value = True, 1, 0), "", tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, tbNit.Text, TbNombre1.Text)
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
@@ -2168,6 +2168,7 @@ Public Class F0_Venta2
         objrep.SetParameterValue("NotaAdicional1", gb_NotaAdicional)
         objrep.SetParameterValue("Descuento", tbMdesc.Value)
         objrep.SetParameterValue("Total", total)
+        objrep.SetParameterValue("RSocial", TbNombre1.Text)
         'objrep.SetParameterValue("usuario", gs_user)
 
 
@@ -3464,6 +3465,7 @@ salirIf:
                 L_Validar_Nit(tbNit.Text.Trim, nom1, nom2)
 
                 If nom1 = "" Then
+                    ClienteNuevo()
                     TbNombre1.Focus()
                 Else
                     TbNombre1.Text = nom1
@@ -3485,6 +3487,8 @@ salirIf:
                             tbVendedor.Focus()
                             Table_Producto = Nothing
                         End If
+
+
                     End If
 
                 End If
@@ -3735,8 +3739,12 @@ salirIf:
     End Sub
 
     Private Sub btCliente_Click(sender As Object, e As EventArgs) Handles btCliente.Click
+        ClienteNuevo()
+    End Sub
+    Private Sub ClienteNuevo()
         Dim frm As New F_ClienteNuevo
         Dim dt As DataTable
+        frm.tbNit.Text = tbNit.Text
         frm.ShowDialog()
 
 
@@ -3767,6 +3775,7 @@ salirIf:
             End If
         End If
     End Sub
+
 
     'Private Sub TbNombre1_KeyDown(sender As Object, e As KeyEventArgs) Handles TbNombre1.KeyDown
     '    If (e.KeyData = Keys.Enter) Then

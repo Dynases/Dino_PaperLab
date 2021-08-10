@@ -66,7 +66,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.AcroPDFLib">
-      <HintPath>C:\librerias\PDF\AxInterop.AcroPDFLib.dll</HintPath>
+      <HintPath>C:\librerias\AxInterop.AcroPDFLib.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -136,7 +136,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DotNetBar for Windows Forms\DevComponents.TreeGX.dll</HintPath>
     </Reference>
-    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="FlashControlV71">
+      <HintPath>C:\librerias\FlashControlV71.dll</HintPath>
+    </Reference>
     <Reference Include="Gma.QrCodeNet.Encoding">
       <HintPath>C:\librerias\Gma.QrCodeNet.Encoding.dll</HintPath>
     </Reference>
@@ -147,7 +149,7 @@
       <HintPath>C:\librerias\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Interop.AcroPDFLib">
-      <HintPath>C:\librerias\PDF\Interop.AcroPDFLib.dll</HintPath>
+      <HintPath>C:\librerias\Interop.AcroPDFLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Janus.Data.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
